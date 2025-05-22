@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="mensagem">Carregando...</h1>
+  <button onclick="logout()">Sair</button>
+  <script>
+    const email = localStorage.getItem("usuario");
+    const expira = localStorage.getItem("expira");
+    if (!email || !expira) {
+        alert("Você precisa estar logado para acessar essa página.");
+        window.location.href = "index.html"; 
+    } else {
+        document.getElementById("mensagem").innerText =
+            `Seja bem-vindo(a), ${email}! Seu token expira em ${expira}`;
+    }
+    function logout() {
+        localStorage.clear();
+        window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
